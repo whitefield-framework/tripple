@@ -8,7 +8,6 @@ The aim also is to produce a feature-rich implementation which could be used on 
 
 TODOs:
 
-|-------------------------|--------------|
 | Feature                 |  Description |
 |-------------------------|--------------|
 | Non-storing MOP | Basic requirement. Support for optimized [6LoRH](https://tools.ietf.org/html/rfc8138) for reduced routing header control overhead |
@@ -30,7 +29,8 @@ TODOs:
 | Adjacency Probing | To check if the preferred parents are still available in case of sparse traffic |
 | Reduced DIO control overhead | Reducing control options in DIO such as Configuration Option, Prefix Option and using a sequence counter to check the version |
 
-| Advanced |-----------|
+| Advanced Features | Description |
+|-------------------------|--------------|
 | Multipath routing | Support for multiple preferred parents and load balancing of data traffic |
 | AODV-RPL | Improved P2P support |
 | Support for RULs | RPL Unaware leaves could be very resource-constrained leaf nodes |
@@ -39,8 +39,8 @@ TODOs:
 | Support for 6LoRH | Reduced data plane control overhead by compressing SRH and RPI headers |
 | Support for GHC | Generic header compression for reduced control overhead |
 
-| Framework |--------|
+| Framework Features | Description |
+|-------------------------|--------------|
 | Integrate with Linux, LWIP, Embedded OSes | |
 | Improved RAM handling | Decoupling routing table and prefix table. |
-| Integrate with Quagga | |
-
+| Realistic testing | Benchmarks based on Whitefield simulation |
