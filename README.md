@@ -7,6 +7,7 @@ The primary mission of this implementation is to ensure most optimal network ove
 The aim also is to produce a feature-rich implementation which could be used on relatively non-constrained environments, however, still be more resource optimal as compared to other routing protocols.
 
 TODOs:
+
 |-------------------------|--------------|
 | Feature                 |  Description |
 |-------------------------|--------------|
@@ -28,7 +29,8 @@ TODOs:
 | Loop detection and avoidance | Handling of RPI for loops detection/avoidance |
 | Adjacency Probing | To check if the preferred parents are still available in case of sparse traffic |
 | Reduced DIO control overhead | Reducing control options in DIO such as Configuration Option, Prefix Option and using a sequence counter to check the version |
-| -----Advanced------------|-----------|
+
+| Advanced |-----------|
 | Multipath routing | Support for multiple preferred parents and load balancing of data traffic |
 | AODV-RPL | Improved P2P support |
 | Support for RULs | RPL Unaware leaves could be very resource-constrained leaf nodes |
@@ -36,7 +38,8 @@ TODOs:
 | Hybrid storing, non-storing RPL instances | Support for DAO projection |
 | Support for 6LoRH | Reduced data plane control overhead by compressing SRH and RPI headers |
 | Support for GHC | Generic header compression for reduced control overhead |
-| ---- Framework -----|------------|
+
+| Framework |--------|
 | Integrate with Linux, LWIP, Embedded OSes | |
 | Improved RAM handling | Decoupling routing table and prefix table. |
 | Integrate with Quagga | |
