@@ -2,9 +2,11 @@
 
 [RPL](https://tools.ietf.org/html/rfc6550)(pronounced ripple) is a routing protocol standardized in IETF for Low-Power and Lossy Networks. This implementation aims to work consistently across, Linux, LWIP and other embedded OS.
 
-The primary mission of this implementation is to ensure most optimal network overhead with tunable parameters towards RPL performance. The implementation will use latest RPL extensions (deemed RPLv2) for its handling.
+The primary mission is to ensure most optimal network overhead with tunable parameters towards RPL performance. The implementation will use latest RPL extensions (deemed RPLv2) for its handling.
 
 The aim also is to produce a feature-rich implementation which could be used on relatively non-constrained environments, however, still be more resource optimal as compared to other routing protocols.
+
+![Alt text](docs/res/tripple-design.png "High Level design")
 
 TODOs:
 
