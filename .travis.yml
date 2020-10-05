@@ -1,0 +1,18 @@
+sudo: required
+dist: trusty
+language: c
+
+cache:
+    apt: true
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -q
+  - sudo apt-get install gcc g++ git build-essential cmake -y
+
+    #before_script:
+    #  - git submodule update --init
+    #  - git submodule foreach git pull origin master
+
+script:
+  - mkdir build && cd build && cmake ../ && make
