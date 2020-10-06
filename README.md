@@ -1,5 +1,8 @@
 # Tripple - RPL routing protocol implementation
 
+[![Build Status](https://travis-ci.org/whitefield-framework/tripple.svg?branch=master)](https://travis-ci.org/whitefield-framework/tripple)
+[![Join the chat at https://gitter.im/whitefield-fw](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/whitefield-fw?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [RPL](https://tools.ietf.org/html/rfc6550)(pronounced ripple) is a routing protocol standardized in IETF for Low-Power and Lossy Networks. This implementation aims to work consistently across, Linux, LWIP and other embedded OS.
 
 The primary mission is to ensure most optimal network overhead with tunable parameters towards RPL performance. The implementation will use latest RPL extensions (deemed RPLv2) for its handling.
