@@ -1,7 +1,7 @@
 # This file is indended to be included in end-user CMakeLists.txt
 # include(/path/to/Filelists.cmake)
 # It assumes the variable TRPL_DIR is defined pointing to the
-# root path of lwIP sources.
+# root path of tripple sources.
 #
 # This file is NOT designed (on purpose) to be used as cmake
 # subdir via add_subdirectory()
@@ -30,7 +30,7 @@ else ("${TRPL_VERSION_RC}" STREQUAL "TRPL_RC_RELEASE")
     )
 endif ("${TRPL_VERSION_RC}" STREQUAL "TRPL_RC_RELEASE")
 
-# The minimum set of files needed for lwIP.
+# The minimum set of files needed for tripple.
 set(trplcore_SRCS
 	${TRPL_DIR}/src/core/msg_handler.c
 )
@@ -44,7 +44,7 @@ set(trplpapi_SRCS
 	${TRPL_DIR}/src/papi/papi_icmp6.c
 )
 
-# All LWIP files without apps
+# All TRPL files without apps
 set(trplall_SRCS
     ${trplcore_SRCS}
     ${trpluapi_SRCS}
@@ -76,6 +76,8 @@ configure_file(${TRPL_DIR}/src/include/init.h.cmake.in ${TRPL_DIR}/src/include/i
 #endif (DOXYGEN_FOUND)
 
 # Tripple library
-add_library(rplcore EXCLUDE_FROM_ALL ${trplall_SRCS})
+add_library(rplcore ${trplall_SRCS})
+include_directories(include src/include)
 target_compile_options(rplcore PRIVATE ${TRPL_COMPILER_FLAGS})
-
+target_compile_definitions(rplcore PRIVATE ${TRPL_DEFINITIONS})
+target_include_directories(rplcore PRIVATE ${TRPL_INCLUDE_DIRS})
