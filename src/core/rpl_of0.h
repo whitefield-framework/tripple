@@ -6,19 +6,17 @@
  */
 
 /**
- * @ingroup     UAPI
+ * @ingroup     Include
  * @{
  *
  * @file
- * @brief       Tripple User API exported header
+ * @brief       Objective Function Zero for RPL.
  *
  * @}
  */
 
-#ifndef _RPL_UAPI_H_
-#define _RPL_UAPI_H_
-
-#include <rpl.h>
+#ifndef _RPL_OF0_H_
+#define _RPL_OF0_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,5 +26,5 @@ extern "C" {
 }
 #endif
 
-
-#endif // _RPL_UAPI_H_
+#endif /*_RPL_OF0_H_*/
+ 

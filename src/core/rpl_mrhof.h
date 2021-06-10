@@ -6,19 +6,17 @@
  */
 
 /**
- * @ingroup     UAPI
+ * @ingroup     Include
  * @{
  *
  * @file
- * @brief       Tripple User API exported header
+ * @brief       The Minimum Rank with Hysteresis Objective Function.
  *
  * @}
  */
 
-#ifndef _RPL_UAPI_H_
-#define _RPL_UAPI_H_
-
-#include <rpl.h>
+#ifndef _RPL_MRHOF_H_
+#define _RPL_MRHOF_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,5 +26,6 @@ extern "C" {
 }
 #endif
 
+#endif /*_RPL_MRHOF_H_*/
+ 
 
-#endif // _RPL_UAPI_H_

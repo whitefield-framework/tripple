@@ -31,18 +31,22 @@ else ("${TRPL_VERSION_RC}" STREQUAL "TRPL_RC_RELEASE")
 endif ("${TRPL_VERSION_RC}" STREQUAL "TRPL_RC_RELEASE")
 
 # The minimum set of files needed for tripple.
-set(trplcore_SRCS
-	${TRPL_DIR}/src/core/msg_handler.c
-)
+#set(trplcore_SRCS
+#	${TRPL_DIR}/src/core/msg_handler.c
+#)
 
-set(trpluapi_SRCS
-	${TRPL_DIR}/src/uapi/uapi_rpl.c
-)
+#set(trpluapi_SRCS
+#	${TRPL_DIR}/src/uapi/uapi_rpl.c
+#)
 
 # APIFILES: The files which implement the sequential and socket APIs.
-set(trplpapi_SRCS
-	${TRPL_DIR}/src/papi/papi_icmp6.c
-)
+#set(trplpapi_SRCS
+#	${TRPL_DIR}/src/papi/papi_icmp6.c
+#)
+
+aux_source_directory(${TRPL_DIR}/src/core/ trplcore_SRCS)
+aux_source_directory(${TRPL_DIR}/src/papi/ trplpapi_SRCS)
+aux_source_directory(${TRPL_DIR}/src/uapi/ trpluapi_SRCS)
 
 # All TRPL files without apps
 set(trplall_SRCS
@@ -77,7 +81,7 @@ configure_file(${TRPL_DIR}/src/include/init.h.cmake.in ${TRPL_DIR}/src/include/i
 
 # Tripple library
 add_library(rplcore ${trplall_SRCS})
-include_directories(include src/include)
+include_directories(include src/include src/papi src/core)
 target_compile_options(rplcore PRIVATE ${TRPL_COMPILER_FLAGS})
 target_compile_definitions(rplcore PRIVATE ${TRPL_DEFINITIONS})
 target_include_directories(rplcore PRIVATE ${TRPL_INCLUDE_DIRS})
