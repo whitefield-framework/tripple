@@ -21,6 +21,9 @@
 #include "rpl_types.h"
 #include "rpl_objective_function.h"
 #include "rpl.h"
+#include "trickle.h"
+#include "rpl_configurations.h"
+#include "rpl_papi.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -189,11 +192,12 @@ typedef struct _rpl_dag_neighbor{
 }rpl_dag_neighbor_t;
 
 typedef struct _rpl_dag_parent{
+	struct _rpl_dag_parent         *next;
     rpl_dag_neighbor_t             *nbr_info;
     rpl_rank_t                     rank;
     rpl_dag_metric_container_t     metric_info;
     uint8_t                        dtsn;
-    uint8_t                        flags
+    uint8_t                        flags;
 }rpl_dag_parent_t;
 
 typedef struct _rpl_dodag_configs{
@@ -207,6 +211,8 @@ typedef struct _rpl_dodag_configs{
     uint8_t      flag_and_pcs;
     uint8_t      unused;
 }rpl_dodag_configs_t;
+
+struct _rpl_instance;
 
 /*
     RPL node can belong to one DODAG in a RPL Instance. So Its highly 
@@ -223,12 +229,12 @@ typedef struct _rpl_dodag{
     uint8_t               is_grounded;
     rpl_dag_parent_t      *preferred_parent;
     rpl_dag_parent_t      *parent_list;
-    rpl_instnace_t        *instnace;
+    struct _rpl_instance  *instnace;
 }rpl_dodag_t;
 
 
 typedef struct _rpl_instance{
-    struct _rpl_instnace *next;
+    struct _rpl_instance *next;
 
     /*At most, a RPL node can belong to one DODAG in a RPL Instance */
     rpl_dodag_t dodag;
@@ -244,7 +250,7 @@ typedef struct _rpl_instance{
     But a Node can be part of only one DODAG in an RPL instnace */
 typedef struct _rpl_node{
     rpl_instance_t *rpl_instance_list;
-    rpl_configurations_t node_config;
+    rpl_configurations_t config;
 }rpl_node_t;
 
 #ifdef __cplusplus

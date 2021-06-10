@@ -20,6 +20,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct _rpl_objective_function{
     uint16_t (*pf_of_compute_path_cost)(void *rpl_parent);
     uint16_t (*pf_of_compute_rank) (void *rpl_parent);
@@ -27,6 +31,9 @@ typedef struct _rpl_objective_function{
     void * (*pf_of_select_n_preferred_parent)(void *parent_list);
 }rpl_objective_function_cb;
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /*_RPL_OBJECTIVE_FUNCTION_*/
 

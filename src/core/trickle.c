@@ -1,4 +1,5 @@
 
+#include "rpl.h"
 #include <trickle.h>
 
 static void rpl_handle_trickle_timeout(void *data)

@@ -22,27 +22,38 @@
  extern "C" {
 #endif
 
-typedef void* rpl_timer_t;
 typedef enum _RPL_TIMER_TYPE
 {
     RPL_TIMER_TYPE_PERIODIC,
     RPL_TIMER_TYPE_ONCE	
 }RPL_TIMER_TYPE;
 
+typedef void* rpl_timer_t;
+
 /************************************************************
 	Timer Related Interfaces. Each platform need to implement their own
 	interface.
 *************************************************************/
 
+/* Callback for timeout */
+
+typedef void (*fpRplTimerTimeoutHandler)(void *user_data);
 /* Timer APIs to be used by the RPL Protocol*/
 /* Create the Timer */
-rpl_timer_t rpl_timer_create_timer_object(void,);
+rpl_timer_t rpl_timer_create_timer_object(RPL_TIMER_TYPE, 
+				fpRplTimerTimeoutHandler, void *);
 
 /*Free the timer object*/
 void rpl_timer_free_timer_object(rpl_timer_t);
 
-/*Start 
+/* Starts the timer */
+uint8_t rpl_timer_start_timer(rpl_timer_t);
 
+/* Stop the timer */
+uint8_t rpl_timer_stop_timer(rpl_timer_t);
+
+/* Get current status of the timer */
+uint8_t rpl_timer_get_status(rpl_timer_t);
 
 #ifdef __cplusplus
  }

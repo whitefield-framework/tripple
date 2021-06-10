@@ -15,8 +15,7 @@
  * @}
  */
 
-#include<rpl_configurations.h>
-#include<rpl.h>
+#include "rpl_topology.h"
 
 rpl_node_t g_rpl_node;
 
@@ -32,7 +31,7 @@ rpl_instance_t * rpl_alloc_new_instnace(){
 
     for (; i < RPL_MAXIMUM_RPL_INSTNACE; i++){
         if (!g_rpl_instance_pool[i].is_used){
-            memset(&(g_rpl_instance_pool[i]), 0, sizeof(rpl_instnace_t));
+            memset(&(g_rpl_instance_pool[i]), 0, sizeof(rpl_instance_t));
             new_instance = &(g_rpl_instance_pool[i]);
             new_instance->is_used = RPL_TRUE;
             break;
@@ -61,8 +60,8 @@ rpl_instance_t *rpl_find_instnace(rpl_node_t *rpl_node, uint8_t instance_id){
 
 rpl_protocol_context rpl_init(rpl_node_configurations_t *config){
     memset(&g_rpl_node, 0 , sizeof(rpl_node_t));
-    g_rpl_node->node_config = *config;
-    return &g_rpl_node;
+    g_rpl_node.config.stNodeConfig = *config;
+    return (rpl_protocol_context)(&g_rpl_node);
 }
 
 int rpl_add_root_instance(rpl_protocol_context rpl_ctx,
@@ -86,8 +85,7 @@ int rpl_add_root_instance(rpl_protocol_context rpl_ctx,
     if (cur_instance != NULL){
         /* Check if we have already joined a do dag in this instance and its 
                 a root in that DODAG */
-        if (cur_instance->dodag && cur_instance->dodag.node_role == 
-            RPL_NODE_TYPE_BR){
+        if (cur_instance->dodag.node_role == RPL_NODE_TYPE_BR){
             return RPL_ERR_INSTANCE_ROOT_EXISTS;
         }
 
@@ -113,10 +111,12 @@ int rpl_add_root_instance(rpl_protocol_context rpl_ctx,
 
     /* Copy the information to DODAG */
     memcpy(cur_dodag->dodag_id.ip6addr.addr8, 
-                instnace_info->dodag_id.ip6addr.addr8);
+                instnace_info->dodag_id.ip6addr.addr8,
+                sizeof(instnace_info->dodag_id.ip6addr));
     cur_dodag->dodag_prefix.prefix_length = instnace_info->prefix_length;
     memcpy(cur_dodag->dodag_prefix.dodag_prefix.ip6addr.addr8, 
-                instnace_info->prefix.ip6addr.addr8);
+                instnace_info->prefix.ip6addr.addr8,
+                sizeof(instnace_info->dodag_id.ip6addr));
     cur_dodag->node_role = RPL_NODE_TYPE_BR;
     cur_dodag->is_grounded = instnace_info->isGrounded;
 
@@ -129,7 +129,7 @@ int rpl_add_root_instance(rpl_protocol_context rpl_ctx,
 
 
 int rpl_start(rpl_protocol_context rpl_ctx){
-    
+    /* Here we will start the timers based on the node type */
 }
 
 

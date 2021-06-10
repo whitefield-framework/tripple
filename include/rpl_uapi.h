@@ -20,4 +20,13 @@
 
 #include <rpl.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+
 #endif // _RPL_UAPI_H_

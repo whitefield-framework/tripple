@@ -76,9 +76,6 @@ extern "C" {
  * @}
  */
 
-/* Modules initialization */
-void rpl_init(void);
-
 #ifdef __cplusplus
 }
 #endif

@@ -20,36 +20,47 @@
  * @}
  */
 
+#ifndef _RPL_CONFIGURATIONS_H_
+#define _RPL_CONFIGURATIONS_H_
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define RPL_SUPPORTED_FOR_LWIP 0x01
-#define RPL_SUPPORTED_FOR_UIP  0x02
-#define RPL_SUPPORTED_FOR_RIOT 0x03
-
 /* Platform Related Configurations */
+
+#define RPL_SUPPORTED_FOR_LWIP   0x01
+#define RPL_SUPPORTED_FOR_UIP    0x02
+#define RPL_SUPPORTED_FOR_RIOT   0x03
+#define RPL_SUPPORTED_FOR_LINUX  0x04
+
+#ifndef RPL_PLATFORM
 #ifdef RPL_WITH_LWIP
 #define RPL_PLATFORM     RPL_SUPPORTED_FOR_LWIP
 #define TIMER_INCLUDE    "lwip_patimer.h"
 #endif
+#endif
 
+#ifndef RPL_PLATFORM
 #ifdef RPL_WITH_UIP
 #define RPL_PLATFORM     RPL_SUPPORTED_FOR_UIP
 #endif
+#endif
 
+#ifndef RPL_PLATFORM
 #ifdef RPL_WITH_RIOT
 #define RPL_PLATFORM     RPL_SUPPORTED_FOR_RIOT
 #endif
+#endif
 
-/* RPL Protocol Constants as per RFC 6550*/
+#ifndef RPL_PLATFORM
+#ifdef RPL_WITH_LINUX
+#define RPL_PLATFORM     RPL_SUPPORTED_FOR_LINUX
+#endif
+#endif
 
-#define DEFAULT_DIO_INTERVAL_MIN           3
-#define DEFAULT_DIO_INTERVAL_DOUBLINGS     20
-#define DEFAULT_DIO_REDUNDANCY_CONSTANT    10
 
-#ifndef _RPL_CONFIGURATIONS_H_
-#define _RPL_CONFIGURATIONS_H_
+/* Static Mmeory Related Configuration */
 
 #ifndef RPL_CONF_USE_STATIC_ALLOCATION
 #define RPL_USE_STATIC_ALLOCATION      1
@@ -65,7 +76,19 @@ extern "C" {
 #define RPL_MAXIMUM_RPL_INSTNACE            RPL_CONF_MAXIMUM_RPL_INSTNACE
 #endif
 
+#ifndef RPL_CONF_MAXIMUM_RPL_PARENT        
+#define RPL_MAXIMUM_RPL_PARENT              50
+#else
+#define RPL_MAXIMUM_RPL_PARENT              RPL_CONF_MAXIMUM_RPL_PARENT
 #endif
+
+#endif
+
+/* RPL Protocol Constants as per RFC 6550*/
+
+#define DEFAULT_DIO_INTERVAL_MIN           3
+#define DEFAULT_DIO_INTERVAL_DOUBLINGS     20
+#define DEFAULT_DIO_REDUNDANCY_CONSTANT    10
 
 /* Trickle Related Configurations */
 #ifndef RPL_CONF_DIO_INTERVAL_MIN

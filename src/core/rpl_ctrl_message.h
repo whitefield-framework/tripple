@@ -19,7 +19,7 @@
 #define _RPL_CTRL_MESSAGE_H_
 
 #include <rpl_topology.h>
-#include <papi_abstractions.h>
+#include "rpl_papi.h"
 
 /* RPL Control message option types */
 #define RPL_CTRL_MSG_OPT_PAD1              0x00

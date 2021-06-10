@@ -15,9 +15,16 @@
  * @}
  */
 
- #ifndef _RPL_OF0_H_
- #define _RPL_OF0_H_
+#ifndef _RPL_OF0_H_
+#define _RPL_OF0_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
- #endif /*_RPL_OF0_H_*/
+#ifdef __cplusplus
+}
+#endif
+
+#endif /*_RPL_OF0_H_*/
  
